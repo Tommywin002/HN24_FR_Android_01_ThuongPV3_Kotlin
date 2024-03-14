@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TestKt" type="JetRunConfigurationType" singleton="false" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="com.example.hn24_fr_android_01_thuongpv3_kotlin.TestKt" />
+    <module name="HN24_FR_Android_01_ThuongPV3_Kotlin.app.main" />
+    <shortenClasspath name="NONE" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
