@@ -6,7 +6,7 @@ fun main(){
     val sc =  Scanner(System.`in`)
     var n: Int = 0
     var checkArrayIndex : Boolean = false
-    print("input array size")
+    print("input array size: ")
     while (checkArrayIndex == false){
         if(sc.hasNextInt()){
             n = sc.nextInt()
@@ -14,13 +14,23 @@ fun main(){
         }
         else{
             println("input again")
-            sc.nextLine()
+            sc.next()
         }
     }
     var arrayOfNumber = IntArray(n)
     print("input array: ")
     for(i in 0 until  arrayOfNumber.size){
-        arrayOfNumber[i] = sc.nextInt()
+        var checkNumberInArray : Boolean = false
+        while (checkNumberInArray == false){
+            if(sc.hasNextInt()){
+                arrayOfNumber[i] = sc.nextInt()
+                checkNumberInArray = true;
+            }
+            else{
+                println("input again")
+                sc.nextLine()
+            }
+        }
     }
     arrayOfNumber.sort()
     for (i in 0 until arrayOfNumber.size){
