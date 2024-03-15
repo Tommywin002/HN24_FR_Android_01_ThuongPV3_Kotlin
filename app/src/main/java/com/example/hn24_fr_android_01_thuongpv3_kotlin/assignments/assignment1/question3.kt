@@ -10,7 +10,9 @@ fun main(){
     while (checkArrayIndex == false){
         if(sc.hasNextInt()){
             n = sc.nextInt()
-            checkArrayIndex = true;
+            if(n > 0){
+                checkArrayIndex = true;
+            }
         }
         else{
             println("input again")

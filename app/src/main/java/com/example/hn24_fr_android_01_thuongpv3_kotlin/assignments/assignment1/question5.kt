@@ -10,7 +10,9 @@ fun main(){
     while (checkType == false){
         if(sc.hasNextInt()){
             year = sc.nextInt()
-            checkType = true;
+            if(year > 0){
+                checkType = true;
+            }
         }
         else{
             println("input again")
@@ -23,7 +25,7 @@ fun main(){
     while (checkType == false){
         if(sc.hasNextInt()){
             month = sc.nextInt()
-            if(month <= 12){
+            if(month in 1..12){
                 checkType = true;
             }
         }
