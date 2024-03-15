@@ -32,7 +32,17 @@ fun main(){
             sc.nextLine()
         }
     }
-    var day = if(year % 4 == 0 && year % 100 != 0 && year % 400 != 0){
+    var day = when(month){
+        1, 3, 5, 7, 8, 10, 12 -> 31
+        4, 6, 9, 11 -> 30
+        else -> {
+            if(year % 4 == 0 && year % 100 != 0 && year % 400 != 0)
+                29
+            else
+                28
+        }
+    }
+    /*day = if(year % 4 == 0 && year % 100 != 0 && year % 400 != 0){
         if(month == 2){
             29
         }
@@ -56,6 +66,6 @@ fun main(){
                 31
             }
         }
-    }
+    }*/
     println("Year: $year, month: $month have $day days ")
 }
