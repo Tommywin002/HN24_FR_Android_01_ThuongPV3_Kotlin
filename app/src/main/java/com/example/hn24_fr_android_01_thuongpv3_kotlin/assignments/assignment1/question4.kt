@@ -12,8 +12,17 @@ fun main(){
         count++
     }
     println("Number of word is $count")
-    val inputStringAfterUpperCase = inputString.split(". ").joinToString(". ") { it.capitalize() }
-    println(inputStringAfterUpperCase)
+    var arrayStringInput = inputString.split(" ")
+    for(i in 0 until arrayStringInput.size)
+    {
+        if(i == 0 || arrayStringInput[i - 1].last() == '.' || arrayStringInput[i - 1].last() == '?' || arrayStringInput[i - 1].last() == '!'){
+            print(arrayStringInput[i].capitalize())
+            print(" ")
+        }
+    }
+
+    /*val inputStringAfterUpperCase = inputString.split(". ").joinToString(". ") { it.capitalize() }
+    println(inputStringAfterUpperCase)*/
 
 }
 
