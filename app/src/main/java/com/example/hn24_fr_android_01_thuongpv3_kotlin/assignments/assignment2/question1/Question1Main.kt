@@ -47,7 +47,7 @@ fun main(){
 
 //lambda expression function
 fun checkPrimeUsingLambdaExpression(number: Int): Boolean{
-    return number > 1 && (2 until number).none(){number % it == 0}
+    return number > 1 && (2 until number).none{number % it == 0}
 }
 
 //higher orders function

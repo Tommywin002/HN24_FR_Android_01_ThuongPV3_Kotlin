@@ -4,7 +4,7 @@ import java.util.Scanner
 
 fun main(){
     val sc = Scanner(System.`in`)
-    var inputNumber = checkNumberType(sc)
+    val inputNumber = checkNumberType(sc)
     //using lambda expression
     print("Using lambda expression: ")
     var sumNumberInput: Int = caculateSumNumberToZero(inputNumber)
@@ -33,8 +33,8 @@ fun caculateSumNumber(a: Int, b: Int): Int = a + b
 
 //check number type correct or not
 fun checkNumberType(sc: Scanner): Int{
-    var number: Int = 0
-    var checkInputNumber: Boolean = false
+    var number = 0
+    var checkInputNumber = false
     while (checkInputNumber == false){
         if(sc.hasNextInt()){
             number = sc.nextInt()

@@ -4,8 +4,8 @@ import java.util.Scanner
 
 fun main(){
     val sc = Scanner(System.`in`)
-    var inputNumber = checkNumberType(sc)
-    var sumNumber = 0;
+    val inputNumber = checkNumberType(sc)
+    var sumNumber: Int;
     //using lambda expression
     print("Using lambda expression: ")
     sumNumber = caculateSumNumberByLambdaExpression(inputNumber)
@@ -22,7 +22,7 @@ fun caculateSumNumberByLambdaExpression(inputNumber: Int): Int{
     var total = 0
     var number = inputNumber
     while (number >= 10){
-        var remainder = number % 10
+        val remainder = number % 10
         number = number / 10
         total = sum(total, remainder)
     }
@@ -34,7 +34,7 @@ fun caculateSumNumberByHigherOrderFunction(inputNumber: Int): Int{
     var number = inputNumber
     var total = 0
     while (number >= 10){
-        var reminders = number % 10
+        val reminders = number % 10
         number = number / 10
         total = calculate(total, reminders, ::sumNumber)
     }
@@ -49,7 +49,7 @@ fun sumNumber(a: Int, b: Int): Int = a + b
 fun checkNumberType(sc: Scanner): Int{
     var number: Int = 0
     var checkInputNumber: Boolean = false
-    while (checkInputNumber == false){
+    while (!checkInputNumber){
         if(sc.hasNextInt()){
             number = sc.nextInt()
             if(number > 0){
