@@ -7,7 +7,9 @@ class Teacher: Person(){
     private var classManaged: String = "Unknow"
     private var salary: Float = 0.0f
     private var workedTime: Int = 0
-
+    companion object{
+        var teacherIdList = ArrayList<Int>()
+    }
     fun getId(): String{
         return id
     }
@@ -20,9 +22,14 @@ class Teacher: Person(){
 
         println()
         println("Input teacher id: ")
-        id = PREFIX_TEACHER + checkNumType(sc).toString()
+        var inputTeacherIdNumber = checkNumType(sc)
+        while (inputTeacherIdNumber in teacherIdList) {
+            println("Id existed")
+            inputTeacherIdNumber = checkNumType(sc)
+        }
+        id = PREFIX_TEACHER + inputTeacherIdNumber.toString()
+        teacherIdList.add(inputTeacherIdNumber)
         super.inputInfo()
-
         println("input salary: ")
         salary = checkNumType(sc).toFloat()
 
@@ -51,6 +58,21 @@ class Teacher: Person(){
         }
         println()
 
+    }
+    fun updateTeacherInfo(id: String){
+        val sc = Scanner(System.`in`)
+        this.id = id
+        super.inputInfo()
+        println("input salary: ")
+        salary = checkNumType(sc).toFloat()
+
+        println("input time of work: ")
+        workedTime = checkNumType(sc)
+
+        println("input class name: ")
+        do {
+            classManaged = sc.next()
+        }while (!checkClassManaged(classManaged))
     }
 
 }

@@ -6,6 +6,10 @@ class Student: Person() {
     private var id: String = "Unknow"
     private var email: String = "Unknow"
     private var score: Float = 0.0f
+
+    companion object {
+        private var idList = mutableListOf<Int>()
+    }
     fun getId(): String{
         return id
     }
@@ -14,10 +18,14 @@ class Student: Person() {
     }
     override fun inputInfo() {
         val sc = Scanner(System.`in`)
-        println()
         print("input student id: ")
-        val idNumber = checkNumberType(sc)
-        this.id = PREFIX + idNumber.toString()
+        var idNumber = checkNumberType(sc)
+        while (idNumber in idList) {
+            println("id existed. ")
+            idNumber = checkNumberType(sc)
+        }
+        id = PREFIX + idNumber.toString()
+        idList.add(idNumber)
 
         super.inputInfo()
 
@@ -30,14 +38,31 @@ class Student: Person() {
         do {
             email = sc.next()
         }while (!checkEmailType(email))
+        println()
     }
-
     override fun showInfo() {
         println("ID: $id")
         super.showInfo()
         println("Email: $email")
         println("Average score: $score")
+        if(score >= 8)
+            println("This student got scholarship")
         println()
+    }
+    fun updateInfo(id: String){
+        val sc = Scanner(System.`in`)
+        this.id = id
+        super.inputInfo()
+
+        print("input average score: ")
+        do {
+            score = checkNumberType(sc).toFloat()
+        }while (score < 0 || score > 10)
+
+        print("input email: ")
+        do {
+            email = sc.next()
+        }while (!checkEmailType(email))
     }
 }
 fun checkNumberType(sc: Scanner): Int{

@@ -66,9 +66,12 @@ fun printStudentList(studentList: MutableMap<String, Student>) {
 fun sortPersonByName(studentList: MutableMap<String, Student>, teacherList: MutableMap<String, Teacher>) {
     val sortedStudentMapByName = studentList.entries.sortedBy { it.value.name }.associate { it.toPair() }
     val sortedTeacherMapByName = teacherList.entries.sortedBy { it.value.name }.associate { it.toPair() }
+    println("Student list after sorted")
     for((key, value ) in sortedStudentMapByName){
         value.showInfo()
     }
+    println()
+    println("Teacher list after sorted")
     for((key, value ) in sortedTeacherMapByName){
         value.showInfo()
     }
@@ -80,7 +83,6 @@ fun deletePerson(studentList: MutableMap<String, Student>, teacherList: MutableM
     println("1. Student")
     println("2. Teacher")
     val input = readLine()
-    var isCorrect = true
     when(input){
         "student" -> {
             print("input id of student: ")
@@ -92,7 +94,6 @@ fun deletePerson(studentList: MutableMap<String, Student>, teacherList: MutableM
                 }
             }
             studentList.remove(inputKey)
-            isCorrect = false
         }
         "teacher" ->{
             print("input id of teacher: ")
@@ -104,7 +105,6 @@ fun deletePerson(studentList: MutableMap<String, Student>, teacherList: MutableM
                 }
             }
             teacherList.remove(inputKey)
-            isCorrect = false
         }
     }
 }
@@ -117,15 +117,52 @@ fun updatePerson(studentList: MutableMap<String, Student>, teacherList: MutableM
     val input = readLine()
     when(input){
         "student" -> {
-            print("input id of student: ")
-            var n = sc.nextLine()
-
+            if(studentList.isEmpty()){
+                println("There is no information")
+            }
+            else{
+                print("input id of student: ")
+                var n: String?
+                var inputKey: String = ""
+                var count = 0
+                while (count == 0){
+                    n = sc.nextLine()
+                    for((key, value ) in studentList){
+                        if(key.equals(n)){
+                            inputKey = key
+                            count++
+                        }
+                    }
+                }
+                var updateStudent = Student()
+                updateStudent.updateInfo(inputKey)
+                studentList.put(inputKey, updateStudent)
+            }
         }
 
         "teacher" ->{
-            print("input id of teacher: ")
-            var n = sc.nextLine()
+            if(studentList.isEmpty()){
+                println("There is no information")
+            }
+            else{
+                print("input id of teacher: ")
+                var n: String?
+                var inputKey: String = ""
+                var count = 0
+                while (count == 0){
+                    n = sc.nextLine()
+                    for((key, value ) in teacherList){
+                        if(key.equals(n)){
+                            inputKey = key
+                            count++
+                        }
+                    }
+                }
+                var updateTeacher = Teacher()
+                updateTeacher.updateTeacherInfo(inputKey)
+                teacherList.put(inputKey, updateTeacher)
 
+            }
         }
     }
 }
