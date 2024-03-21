@@ -38,11 +38,13 @@ fun printPreviousMonthTransaction(landList: MutableList<Land>, houseList: Mutabl
     val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
     val today = LocalDate.now()
     val lastMonth = today.minusMonths(1)
-
+    var count1 = 0
+    var count2 = 0
     for (landListDate in landList){
         val transactionDate = LocalDate.parse(landListDate.getLandDate().trim(), formatter)
         if(transactionDate.year == today.year && transactionDate.month == lastMonth.month){
             landListDate.printLandTransaction()
+            count1++
         }
     }
 
@@ -50,8 +52,13 @@ fun printPreviousMonthTransaction(landList: MutableList<Land>, houseList: Mutabl
         val transactionDate = LocalDate.parse(houseListDate.getHouseDate().trim(), formatter)
         if(transactionDate.year == today.year && transactionDate.month == lastMonth.month){
             houseListDate.printHouseTransaction()
+            count2++
         }
     }
+    if (count1 == 0)
+        println("There is no land transaction in previous month")
+    if (count2 == 0)
+        println("There is no house transaction in previous month")
 }
 
 fun printLandAveragePrice(landList: MutableList<Land>) {
