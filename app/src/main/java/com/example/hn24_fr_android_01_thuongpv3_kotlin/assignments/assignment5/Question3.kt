@@ -22,6 +22,7 @@ fun main() {
                 val number = channel1.receive()
                 val square = number * number
                 println(square)
+                println()
             }
         }
     }
