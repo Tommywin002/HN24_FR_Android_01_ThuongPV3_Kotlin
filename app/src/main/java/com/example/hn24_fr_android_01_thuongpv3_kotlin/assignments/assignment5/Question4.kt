@@ -15,7 +15,7 @@ fun main() {
                 val randomNumber = Random.nextInt(-100, 1)
                 println("First number: $randomNumber")
                 channel.send(randomNumber)
-                delay(1000)
+                delay(500)
             }
         }
         launch {
@@ -25,7 +25,7 @@ fun main() {
                 val firstNumber = channel.receive()
                 total = randomMinusNumber + firstNumber
                 println("Total: $total")
-                delay(1000)
+                delay(500)
             }
         }
     }
